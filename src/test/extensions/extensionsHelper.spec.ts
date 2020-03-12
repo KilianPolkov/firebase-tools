@@ -53,7 +53,7 @@ describe("extensionsHelper", () => {
     const expected = {
       ENV_VAR_ONE: "12345",
       ENV_VAR_TWO: "hello@example.com",
-      ENV_VAR_THREE: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+      ENV_VAR_THREE: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
       ENV_VAR_FOUR: "users/{sender}.friends",
     };
 
@@ -70,7 +70,7 @@ describe("extensionsHelper", () => {
       },
       {
         param: "ENV_VAR_THREE",
-        default: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        default: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
         validationRegex: ".*\\{token\\}.*",
         validationErrorMessage:
           "Your URL must include {token} so that it can be replaced with an actual invitation token.\n",
@@ -89,7 +89,7 @@ describe("extensionsHelper", () => {
       const envFile = {
         ENV_VAR_ONE: "12345",
         ENV_VAR_TWO: "hello@example.com",
-        ENV_VAR_THREE: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        ENV_VAR_THREE: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
       };
 
       expect(extensionsHelper.populateDefaultParams(envFile, exampleParamSpec)).to.deep.equal(
@@ -100,7 +100,7 @@ describe("extensionsHelper", () => {
     it("should throw error if no default is available", () => {
       const envFile = {
         ENV_VAR_ONE: "12345",
-        ENV_VAR_THREE: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        ENV_VAR_THREE: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
         ENV_VAR_FOUR: "users/{sender}.friends",
       };
 
@@ -124,7 +124,7 @@ describe("extensionsHelper", () => {
       },
       {
         param: "ENV_VAR_THREE",
-        default: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        default: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
         validationRegex: ".*\\{token\\}.*",
         validationErrorMessage:
           "Your URL must include {token} so that it can be replaced with an actual invitation token.\n",
@@ -143,7 +143,7 @@ describe("extensionsHelper", () => {
       const envFile = {
         ENV_VAR_ONE: "12345",
         ENV_VAR_TWO: "invalid",
-        ENV_VAR_THREE: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        ENV_VAR_THREE: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
         ENV_VAR_FOUR: "users/{sender}.friends",
       };
 
@@ -156,7 +156,7 @@ describe("extensionsHelper", () => {
       const envFile = {
         ENV_VAR_ONE: "12345",
         ENV_VAR_TWO: "invalid",
-        ENV_VAR_THREE: "https://${PROJECT_ID}.firebaseapp.com/?acceptInvitation={token}",
+        ENV_VAR_THREE: "https://${PROJECT_ID}.web.app/?acceptInvitation={token}",
       };
 
       expect(() => {
